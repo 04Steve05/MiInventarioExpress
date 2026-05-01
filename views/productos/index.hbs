@@ -1,0 +1,31 @@
+<div class="pagina-encabezado">
+  <h2>Lista de Productos</h2>
+  {{#if usuario}}
+    <a href="/productos/crear" class="boton-primario">+ Nuevo Producto</a>
+  {{/if}}
+</div>
+
+{{#if productos.length}}
+  <div class="productos-grilla">
+    {{#each productos}}
+      <div class="producto-tarjeta">
+        <img src="{{rutaImagen imagen}}" alt="{{nombre}}">
+        <div class="producto-info">
+          <h3>{{nombre}}</h3>
+          <p class="producto-precio">${{precio}}</p>
+          <p class="producto-descripcion">{{descripcion}}</p>
+        </div>
+        {{#if ../usuario}}
+          <div class="producto-acciones">
+            <a href="/productos/editar/{{_id}}" class="boton-secundario">Editar</a>
+            <form action="/productos/eliminar/{{_id}}" method="POST">
+              <button type="submit" class="boton-peligro" onclick="return confirm('¿Eliminar este producto?')">Eliminar</button>
+            </form>
+          </div>
+        {{/if}}
+      </div>
+    {{/each}}
+  </div>
+{{else}}
+  <p class="sin-datos">No hay productos registrados aún.</p>
+{{/if}}

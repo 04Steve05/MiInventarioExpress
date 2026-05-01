@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MiInventarioExpress</title>
+  <link rel="stylesheet" href="/css/estilos.css">
+  <link rel="icon" href="data:,">
+</head>
+<body>
+
+  <nav>
+    <div class="nav-marca">
+      <a href="/productos">MiInventarioExpress</a>
+    </div>
+    <div class="nav-toggle" id="nav-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="nav-enlaces">
+      {{#if usuario}}
+        <span>Hola, {{usuario.nombre}}</span>
+        <a href="/productos/crear">Nuevo Producto</a>
+        <a href="/chat">Chat</a>
+        <a href="/logout">Cerrar Sesión</a>
+      {{else}}
+        <a href="/login">Iniciar Sesión</a>
+      {{/if}}
+    </div>
+  </nav>
+
+  <main class="contenedor">
+    {{{body}}}
+  </main>
+
+  <footer>
+    <p>MiInventarioExpress &copy; 2024</p>
+  </footer>
+
+  <script src="/js/principal.js"></script>
+</body>
+</html>
